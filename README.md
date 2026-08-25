@@ -22,6 +22,16 @@ The goal is to make common PC monitoring and maintenance tasks easier to access 
 
 ---
 
+## Demo
+
+Click the preview below to watch the Pixel Guardian v1.0.0 product demo.
+
+[![Watch Pixel Guardian Demo](screenshots/01-dashboard.png)](PixelGuardian_Demo_Redacted_v2.mp4)
+
+▶ **[Watch the full product demo](PixelGuardian_Demo_Redacted_v2.mp4)**
+
+---
+
 ## Key Features
 
 - Detailed hardware and operating-system information
@@ -241,28 +251,22 @@ The application follows several safety rules:
 Pixel-Guardian/
 │
 ├── app/
-│
 ├── assets/
 │   └── icons/
-│
 ├── core/
 │   ├── models/
 │   └── services/
-│
 ├── infrastructure/
 │   ├── logging/
 │   ├── providers/
 │   │   └── windows/
 │   └── system/
-│
 ├── screenshots/
-│
 ├── ui/
 │   ├── navigation/
 │   ├── pages/
 │   ├── styles/
 │   └── widgets/
-│
 ├── run.py
 ├── requirements.txt
 ├── PixelGuardian.spec
@@ -293,19 +297,14 @@ Enter the project directory:
 cd Pixel-Guardian
 ```
 
-Create a virtual environment:
+Create and activate a virtual environment:
 
 ```bash
 python -m venv .venv
-```
-
-Activate it:
-
-```bash
 .venv\Scripts\activate
 ```
 
-Install the dependencies:
+Install dependencies:
 
 ```bash
 pip install -r requirements.txt
@@ -323,8 +322,6 @@ python run.py
 
 Pixel Guardian can be packaged into a standalone Windows application using PyInstaller.
 
-Run:
-
 ```bash
 build_exe.bat
 ```
@@ -340,8 +337,6 @@ dist/PixelGuardian/
 ## Building the Windows Installer
 
 Pixel Guardian uses Inno Setup 6 to generate a Windows installer.
-
-Run:
 
 ```bash
 build_installer.bat
@@ -363,7 +358,7 @@ Current target platform:
 
 **Windows**
 
-The first public release will include the packaged Windows installer and a short product demo.
+The product demo is available above. The packaged Windows installer will be attached to the public GitHub Release for v1.0.0.
 
 ---
 
