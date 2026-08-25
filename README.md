@@ -1,262 +1,132 @@
-Pixel Guardian
+<div align="center">
 
-Pixel Guardian is a Windows desktop utility for monitoring PC hardware and system activity, reviewing drivers and disk health, safely cleaning temporary files, and checking gaming readiness from a single interface.
+# Pixel Guardian
 
-Built as a complete desktop product using a layered Python architecture, Pixel Guardian combines Windows system information, real-time monitoring, maintenance tools, and gaming-focused utilities in one application.
+### Windows PC monitoring, maintenance, and gaming tools — in one desktop app.
 
-Current version: 1.0.0
+![Version](https://img.shields.io/badge/version-1.0.0-blue)
+![Platform](https://img.shields.io/badge/platform-Windows-0078D4)
+![Python](https://img.shields.io/badge/Python-3.12-3776AB)
+![UI](https://img.shields.io/badge/UI-PySide6%20%2F%20Qt-41CD52)
 
-Screenshots
+</div>
 
-Dashboard
+<p align="center">
+  <img src="./screenshots/01-dashboard.png" alt="Pixel Guardian Dashboard" width="100%">
+</p>
 
+## Overview
 
+**Pixel Guardian** is a Windows desktop utility that brings hardware inspection, real-time system monitoring, driver review, safe temporary-file cleanup, disk-health information, and gaming-performance tools into one interface.
 
-Hardware Information
+The project was built end-to-end as a production-style desktop application, including the application architecture, Windows integrations, packaging, installer, testing, and release workflow.
 
+## Highlights
 
+| Module | What it does |
+| --- | --- |
+| **Hardware Information** | Displays CPU, GPU, RAM, OS, motherboard, BIOS, storage, and other detected hardware details. |
+| **Live Monitor** | Tracks CPU, memory, system drive, running processes, disk activity, network activity, and per-core CPU usage in real time. |
+| **Disk Health** | Reviews detected drives, capacity, firmware, operational status, and supported reliability information. |
+| **Drivers** | Inspects installed devices and drivers, including status, version, provider, date, signature state, search, and filtering. |
+| **Safe Cleaner** | Scans supported temporary-file locations before cleanup and separates standard from administrator-required operations. |
+| **Game Lab** | Detects supported Steam/Epic games, checks gaming readiness, and provides FPS estimates using detected CPU/GPU hardware. |
 
-Live Monitor
+## Product Tour
 
+### Real-time system monitoring
+<p align="center">
+  <img src="./screenshots/03-live-monitor.png" alt="Pixel Guardian Live Monitor" width="100%">
+</p>
 
+### Hardware detection
+<p align="center">
+  <img src="./screenshots/02-hardware-information.png" alt="Pixel Guardian Hardware Information" width="100%">
+</p>
 
-Game Lab
+### Gaming performance estimates
+<p align="center">
+  <img src="./screenshots/04-game-lab.png" alt="Pixel Guardian Game Lab" width="100%">
+</p>
 
+### Safe cleanup workflow
+<p align="center">
+  <img src="./screenshots/06-cleaner.png" alt="Pixel Guardian Cleaner" width="100%">
+</p>
 
+### Driver inspection
+<p align="center">
+  <img src="./screenshots/05-drivers.png" alt="Pixel Guardian Drivers" width="100%">
+</p>
 
-Drivers
+## Tech Stack
 
+- **Python 3.12**
+- **PySide6 / Qt 6** — desktop UI
+- **psutil** — system and performance metrics
+- **Windows APIs / Registry / PowerShell integration**
+- **PyInstaller** — standalone Windows build
+- **Inno Setup 6** — Windows installer
 
+## Architecture
 
-Cleaner
-
-
-
-Features
-
-Hardware Information
-
-Windows and operating-system information
-
-CPU model and core information
-
-Installed and available memory
-
-Graphics-card information
-
-Motherboard and BIOS information
-
-Storage and other detected hardware details
-
-Live Monitor
-
-Real-time CPU usage
-
-Memory usage
-
-System-drive usage
-
-Running-process count
-
-Disk activity
-
-Network activity
-
-Per-core CPU utilization
-
-Pause and resume monitoring
-
-Disk Health
-
-Detects installed drives
-
-Displays drive type, capacity, firmware, and operational status
-
-Reads supported Windows disk-health and reliability information
-
-Supports additional reliability information when Windows permissions and hardware support allow it
-
-Drivers
-
-Scans installed Windows devices and drivers
-
-Displays device class, status, version, provider, date, and signature state
-
-Highlights devices that may require attention
-
-Supports searching and filtering the driver inventory
-
-Quick access to Windows Device Manager
-
-Safe Cleaner
-
-Scans before deleting anything
-
-Detects temporary and unnecessary files
-
-Separates standard and administrator-required cleanup operations
-
-Shows detected size and item count before cleaning
-
-Supports categories such as user temporary files, Windows temporary files, thumbnail cache, DirectX shader cache, and other supported cleanup targets
-
-Game Lab
-
-Detects supported installed Steam and Epic Games
-
-Reviews Windows gaming-readiness settings
-
-Detects the current CPU and GPU for gaming-performance checks
-
-Supports online FPS estimates through FPSHQ when data is available
-
-Caches successful gaming-performance results locally
-
-Application Settings
-
-English and Arabic interface support
-
-Restore last opened page
-
-Windows notifications
-
-Notification sound controls
-
-System-tray support
-
-Start minimized and tray behavior
-
-Tech Stack
-
-Python 3.12
-
-PySide6 / Qt — desktop UI
-
-psutil — system and performance metrics
-
-Windows system APIs / Registry / PowerShell integration
-
-PyInstaller — Windows application packaging
-
-Inno Setup 6 — Windows installer
-
-Architecture
-
-Pixel Guardian uses a layered structure that separates application logic, Windows-specific system access, and the UI.
-
+```text
 app/              Application bootstrap and startup
 core/             Domain models and application services
 infrastructure/   Windows providers, logging, paths, and elevation
 ui/               PySide6 pages, widgets, navigation, and styles
-assets/           Application icons and visual assets
+assets/           Icons and application assets
+```
 
-This structure keeps Windows-specific operations inside infrastructure providers while UI pages communicate through application services.
+The application uses a layered structure so Windows-specific operations stay separated from UI code and application logic.
 
-Project Structure
+## Run From Source
 
-Pixel-Guardian/
-├── app/
-├── assets/
-│   └── icons/
-├── core/
-│   ├── models/
-│   └── services/
-├── infrastructure/
-│   ├── logging/
-│   ├── providers/
-│   │   └── windows/
-│   └── system/
-├── ui/
-│   ├── navigation/
-│   ├── pages/
-│   ├── styles/
-│   └── widgets/
-├── run.py
-├── requirements.txt
-├── PixelGuardian.spec
-├── PixelGuardianInstaller.iss
-├── build_exe.bat
-└── build_installer.bat
+**Requirements:** Windows 10/11 and Python 3.12 recommended.
 
-Run From Source
-
-Requirements
-
-Windows 10 or Windows 11
-
-Python 3.12 recommended
-
-Create a virtual environment:
-
+```powershell
 python -m venv .venv
-
-Install dependencies:
-
 .\.venv\Scripts\python.exe -m pip install -r requirements.txt
-
-Run Pixel Guardian:
-
 .\.venv\Scripts\python.exe run.py
+```
 
-Build the Windows Application
+## Build
 
-Build the application with PyInstaller:
+Build the standalone application:
 
+```powershell
 .\build_exe.bat
+```
 
-The generated application is placed in:
+Build the installer with Inno Setup 6:
 
-dist\PixelGuardian\
-
-To create the installer, install Inno Setup 6 and run:
-
+```powershell
 .\build_installer.bat
+```
 
-The installer is generated in:
+Generated installer:
 
+```text
 installer_output\PixelGuardian_Setup_1.0.0.exe
+```
 
-Windows Installer
+## Safety
 
-Pixel Guardian v1.0.0 is packaged as a Windows installer using Inno Setup.
+Pixel Guardian separates inspection from destructive operations. Cleanup results are shown before deletion, supported administrator operations request elevation when needed, and driver functionality is informational — it does **not** automatically install or replace drivers.
 
-The installer supports:
+## Development Approach
 
-Per-user installation
+Pixel Guardian was developed using an **AI-assisted product-building workflow**: requirements were defined feature by feature, implementation was iterated in stages, behavior was tested on real Windows systems, and the final application was packaged into a standalone executable and installer.
 
-Start Menu shortcut
+## Demo & Release
 
-Optional desktop shortcut
+**v1.0.0** is the first packaged release. A short product demo and the Windows installer will be linked here as part of the public release.
 
-Application icon and uninstall entry
+---
 
-Launching Pixel Guardian after installation
+<div align="center">
 
-The final installer will be available from the repository's GitHub Releases section.
-
-Safety
-
-Pixel Guardian includes system-inspection and cleanup features, so potentially destructive operations are intentionally separated from scanning.
-
-Cleanup results are shown before files are removed.
-
-Administrative elevation is requested only when a supported operation requires it.
-
-The cleaner targets predefined supported cleanup locations rather than arbitrary user files.
-
-Driver functionality is informational and does not automatically install or replace drivers.
-
-Development Approach
-
-Pixel Guardian was developed as an end-to-end product using an AI-assisted development workflow: requirements were broken into individual features, implemented in stages, tested on real Windows systems, and iterated based on actual application behavior.
-
-The application has been built into a standalone Windows executable and tested across multiple PCs.
-
-Demo
-
-A short product demo will be added here after the public v1.0.0 release is published.
-
-Developer
-
-Hamza Omar
+**Built by Hamza Omar**  
 Computer Science Student · AI-Assisted Product Builder
+
+</div>
